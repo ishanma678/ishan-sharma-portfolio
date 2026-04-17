@@ -3,136 +3,481 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ishan Sharma – Designer, Innovator, Entrepreneur</title>
-  <!-- Google Fonts for elegant typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Ishan Sharma – Premium Portfolio</title>
+  <!-- Google Fonts and Tailwind CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Animations ported from the TypeScript component */
+    @keyframes appleIn {
+      0% {
+        opacity: 0;
+        transform: translateY(90px) scale(0.92) rotateX(10deg);
+        filter: blur(10px);
+      }
+      55% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.01) rotateX(0deg);
+        filter: blur(0px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+    }
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+      50% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.08); }
+    }
+    .apple-reveal {
+      animation: appleIn linear, glowPulse 4s ease-in-out infinite;
+      transform-style: preserve-3d;
+      will-change: transform, opacity, filter;
+    }
+    .premium-hover {
+      transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), border-color 450ms ease, background 450ms ease, box-shadow 450ms ease;
+    }
+    .premium-hover:hover {
+      transform: translateY(-10px) scale(1.015);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    }
+  </style>
 </head>
-<body>
-  <!-- Hero section with background image and overlay -->
-  <header class="hero">
-    <div class="overlay">
-      <nav class="navbar">
-        <a href="#about">About</a>
-        <a href="#portfolio">Works</a>
-        <a href="#testimonial">Testimonial</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="hero-content">
-        <h1>Ishan Sharma</h1>
-        <p>Designer • Innovator • Entrepreneur</p>
-        <a href="#portfolio" class="cta">View My Work</a>
+<body class="min-h-screen bg-neutral-950 text-white selection:bg-white selection:text-black scroll-smooth">
+  <!-- Sticky navigation bar -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div>
+        <div class="text-lg font-semibold tracking-[0.18em] uppercase">Ishan Sharma</div>
+        <div class="text-xs text-white/50">Designer · Innovator · Entrepreneur</div>
       </div>
+      <nav class="hidden gap-6 text-sm text-white/70 md:flex">
+        <a class="transition hover:text-white" href="#work">Work</a>
+        <a class="transition hover:text-white" href="#rates">Rates</a>
+        <a class="transition hover:text-white" href="#education">Education</a>
+        <a class="transition hover:text-white" href="#testimonial">Testimonial</a>
+        <a class="transition hover:text-white" href="#services">Services</a>
+        <a class="transition hover:text-white" href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
-
-  <main>
-    <!-- About section -->
-    <section id="about" class="about-section">
-      <h2>About Me</h2>
-      <p>
-        I’m Ishan Sharma, a freelance web developer and designer based in
-        Etobicoke, Ontario. With a background in Digital and Content
-        Marketing (York University) and Information Technology Project
-        Management (Canadore College), I combine creative design with
-        strategic thinking to craft digital experiences that connect brands
-        with their audiences.
-      </p>
-      <p>
-        My journey spans from earning a Bachelor of Science in
-        Information Technology at the University of Northampton (2017–2021)
-        to hands‑on projects across industries. I specialize in blending
-        aesthetic appeal with functional excellence, ensuring every site
-        not only looks premium but performs seamlessly.
-      </p>
-      <h3>Skills</h3>
-      <ul class="skills-list">
-        <li>Digital Marketing</li>
-        <li>SEO &amp; Analytics</li>
-        <li>Web Design &amp; Development</li>
-        <li>Project Management</li>
-        <li>Content Strategy</li>
-      </ul>
-    </section>
-
-    <!-- Portfolio section -->
-    <section id="portfolio" class="portfolio-section">
-      <h2>Selected Works</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-item">
-          <!-- Use the brand initial as a stylish placeholder instead of a random image -->
-          <div class="project-icon">R</div>
-          <h4>FrenchieRose</h4>
-          <p>
-            A refined, responsive website for a luxury brand. I focused on
-            elegant typography and a seamless user experience that reflects
-            exclusivity.
-          </p>
-          <a href="https://frenchierose.com" target="_blank" class="project-link"
-            >Visit Site</a
-          >
+  <!-- Hero / Introduction section -->
+  <section class="relative overflow-hidden">
+    <!-- Subtle gradient and grid overlays to evoke luxury and depth -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(to_bottom,rgba(255,255,255,0.05),transparent_35%)]"></div>
+    <div class="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,0.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.25)_1px,transparent_1px)] [background-size:44px_44px]"></div>
+    <div class="relative mx-auto grid min-h-[92vh] max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-10 lg:py-24">
+      <!-- Left content describing services and tagline -->
+      <div class="max-w-3xl">
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white/70">
+          Freelance Web Developer & Designer
         </div>
-        <div class="portfolio-item">
-          <!-- Initial for Tess Grey instead of a placeholder image -->
-          <div class="project-icon">T</div>
-          <h4>Tess Grey</h4>
-          <p>
-            A modern personal branding site for a professional, emphasizing
-            strong imagery and a minimal color palette to convey trust and
-            sophistication.
-          </p>
-          <a href="https://www.tessgrey.ca" target="_blank" class="project-link"
-            >Visit Site</a
-          >
+        <h1 class="text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+          I create websites that inspire & convert.
+          <span class="block text-white/65">Premium websites for models, personal brands, and luxury‑facing businesses.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
+          I design websites that look elevated, feel modern, and help clients present themselves professionally online. My work focuses on elegant visuals, strong branding, and user experiences that build trust.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#work" class="rounded-2xl border border-white bg-white px-6 py-3 text-sm font-medium text-black transition hover:-translate-y-0.5 hover:bg-white/90">View My Work</a>
+          <a href="#contact" class="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10">Work With Me</a>
         </div>
-        <div class="portfolio-item">
-          <!-- Initial for Isabella Brunelli to keep consistency -->
-          <div class="project-icon">I</div>
-          <h4>Isabella Brunelli</h4>
-          <p>
-            An artistic portfolio for a creative, showcasing work through
-            immersive visuals and intuitive navigation.
-          </p>
-          <a
-            href="https://www.isabellabrunelli.com"
-            target="_blank"
-            class="project-link"
-            >Visit Site</a
-          >
+        <!-- Metric cards -->
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+            <div class="text-2xl font-semibold">5+</div>
+            <div class="mt-1 text-sm text-white/60">Featured projects & references</div>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+            <div class="text-2xl font-semibold">Luxury</div>
+            <div class="mt-1 text-sm text-white/60">Design direction for high-end presentation</div>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+            <div class="text-2xl font-semibold">SEO</div>
+            <div class="mt-1 text-sm text-white/60">Marketing background to support visibility</div>
+          </div>
+        </div>
+
+        <!-- Trusted logos row -->
+        <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/50">
+          <span>York University</span>
+          <span>Canadore College</span>
+          <span>University of Northampton</span>
+          <span>FrenchieRose</span>
+          <span>Tess Grey</span>
+          <span>Isabella Brunelli</span>
+          <span>Daraz</span>
+          <span>babalkaam</span>
         </div>
       </div>
-    </section>
-
-    <!-- Testimonial section -->
-    <section id="testimonial" class="testimonial-section">
-      <h2>Testimonial</h2>
-      <blockquote>
-        <p>
-          “Working with Ishan on my FrenchieRose website was a transformative
-          experience. He listened carefully to my vision and translated it
-          into a digital masterpiece that feels both opulent and inviting.
-          His attention to detail and passion for design shine through in
-          every page. I couldn’t have asked for a better partner.”
-        </p>
-        <footer>— Anamdine, Model &amp; Founder of FrenchieRose</footer>
-      </blockquote>
-    </section>
-
-    <!-- Contact section -->
-    <section id="contact" class="contact-section">
-      <h2>Get in Touch</h2>
-      <p>
-        Ready to elevate your brand? Let’s create something beautiful together.  
-        You can email me at 
-        <a href="mailto:ishanma678@gmail.com">ishanma678@gmail.com</a>
-        or <a href="mailto:maishan578@gmail.com">maishan578@gmail.com</a>,
-        or call/text me at <a href="tel:+14376028171">+1&nbsp;437&nbsp;602&nbsp;8171</a>.
+      <!-- Right side profile card -->
+      <div class="relative">
+        <div class="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute -bottom-10 -right-4 h-28 w-28 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-6 shadow-2xl shadow-black/40">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <div>
+              <div class="text-xs uppercase tracking-[0.2em] text-white/45">Profile</div>
+              <div class="mt-1 text-2xl font-semibold">Ishan Sharma</div>
+            </div>
+            <div class="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">Available for freelance</div>
+          </div>
+          <div class="mt-6 space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div class="text-sm text-white/45">Focus</div>
+              <div class="mt-2 text-base leading-7 text-white/80">Web design, branding, premium portfolio sites, model websites, visual positioning, and digital presentation.</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div class="text-sm text-white/45">Style</div>
+              <div class="mt-2 text-base leading-7 text-white/80">Clean, luxurious, modern, smooth, and built to feel credible for high-value clients.</div>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
+                <div class="text-sm text-white/45">Based in</div>
+                <div class="mt-2 text-white/85">Toronto, Canada</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
+                <div class="text-sm text-white/45">Audience</div>
+                <div class="mt-2 text-white/85">Models & personal brands</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Portfolio / Work section -->
+  <section id="work" class="apple-reveal mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <div class="text-xs uppercase tracking-[0.22em] text-white/40">Portfolio</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Selected work & inspirations</h2>
+      </div>
+      <p class="max-w-2xl text-sm leading-7 text-white/60 sm:text-base">
+        These projects reflect the visual quality, branding direction, and digital experience I build for clients who want to look polished and stand out online.
       </p>
-    </section>
-  </main>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <!-- Frenchie Rose project -->
+      <a href="https://frenchierose.com" target="_blank" class="group premium-hover rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-lg font-semibold text-white/85">FR</div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/45 transition group-hover:text-white/70">Open site</div>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Frenchie Rose</h3>
+        <p class="mt-3 text-sm leading-7 text-white/60">Luxury-focused website design with elegant visuals, strong branding, and a client-friendly experience tailored for a model's online presence.</p>
+        <div class="mt-6 text-sm text-white/80">Visit project →</div>
+      </a>
+      <!-- Tess Grey project -->
+      <a href="https://www.tessgrey.ca" target="_blank" class="group premium-hover rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-lg font-semibold text-white/85">TG</div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/45 transition group-hover:text-white/70">Open site</div>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Tess Grey</h3>
+        <p class="mt-3 text-sm leading-7 text-white/60">A clean, premium personal brand website built to feel polished, modern, and conversion-focused for bookings and visibility.</p>
+        <div class="mt-6 text-sm text-white/80">Visit project →</div>
+      </a>
+      <!-- Isabella Brunelli project -->
+      <a href="https://www.isabellabrunelli.com" target="_blank" class="group premium-hover rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-lg font-semibold text-white/85">IB</div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/45 transition group-hover:text-white/70">Open site</div>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Isabella Brunelli</h3>
+        <p class="mt-3 text-sm leading-7 text-white/60">An elegant showcase style inspired by luxury presentation, visual trust, and a refined aesthetic for high-end clientele.</p>
+        <div class="mt-6 text-sm text-white/80">Visit project →</div>
+      </a>
+      <!-- Lana Sofia project -->
+      <a href="https://www.lana-sofia.com/" target="_blank" class="group premium-hover rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-lg font-semibold text-white/85">LS</div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/45 transition group-hover:text-white/70">Open site</div>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Lana Sofia</h3>
+        <p class="mt-3 text-sm leading-7 text-white/60">A refined, luxury model website with strong visual storytelling, elegant layout, and high-end client appeal.</p>
+        <div class="mt-6 text-sm text-white/80">Visit project →</div>
+      </a>
+      <!-- Jenna Hart project -->
+      <a href="https://jennahart.net" target="_blank" class="group premium-hover rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-lg font-semibold text-white/85">JH</div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/45 transition group-hover:text-white/70">Open site</div>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Jenna Hart</h3>
+        <p class="mt-3 text-sm leading-7 text-white/60">A clean, premium personal brand site focused on aesthetics, simplicity, and strong client conversion flow.</p>
+        <div class="mt-6 text-sm text-white/80">Visit project →</div>
+      </a>
+    </div>
+  </section>
+  <!-- Rates / Pricing section -->
+  <section id="rates" class="apple-reveal mx-auto max-w-7xl px-6 py-8 lg:px-10">
+    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <div class="text-xs uppercase tracking-[0.22em] text-white/40">Rates</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Flexible pricing based on scope</h2>
+      </div>
+      <p class="max-w-2xl text-sm leading-7 text-white/60 sm:text-base">
+        Pricing is negotiable depending on your goals, features, revisions, timeline, and the level of support you need. These packages give a clear starting point.
+      </p>
+    </div>
+    <div class="grid gap-6 xl:grid-cols-3">
+      <!-- Starter plan -->
+      <div class="premium-hover rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 transition duration-300">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-white/40">Starter</div>
+            <div class="mt-3 text-3xl font-semibold tracking-tight">$800 USD</div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-7 text-white/60">For clean launch-ready websites</p>
+        <div class="mt-6 space-y-3">
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>3–4 page website</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Premium-looking custom layout</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Mobile responsive design</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Basic SEO setup</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Contact / inquiry form</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Basic branding alignment</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Fast, clean structure</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Ideal for newer personal brands</span></div>
+        </div>
+      </div>
+      <!-- Premium plan -->
+      <div class="premium-hover rounded-[2rem] border border-white/25 bg-white/[0.07] shadow-2xl shadow-black/30 p-7 transition duration-300">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-white/40">Premium</div>
+            <div class="mt-3 text-3xl font-semibold tracking-tight">$1500 USD</div>
+          </div>
+          <div class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs text-white/80">Most Popular</div>
+        </div>
+        <p class="mt-4 text-sm leading-7 text-white/60">Most popular for serious personal branding</p>
+        <div class="mt-6 space-y-3">
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Everything in Starter</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>More refined premium build</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Stronger custom visual direction</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Walk-through call after delivery</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>More revisions included</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Post-launch support</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Better page structure for conversions</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Enhanced polish and animation</span></div>
+        </div>
+      </div>
+      <!-- Advanced plan -->
+      <div class="premium-hover rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 transition duration-300">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-white/40">Advanced</div>
+            <div class="mt-3 text-3xl font-semibold tracking-tight">$3000+ USD</div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-7 text-white/60">For fully customized, growth-focused builds</p>
+        <div class="mt-6 space-y-3">
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Everything in Premium</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Advanced SEO foundation</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Fully customizable structure</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Extended support</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Walk-through videos + documentation</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Strategy-based build process</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>High-end custom sections and experiences</span></div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/20 px-4 py-3 text-sm text-white/80"><span class="mt-[3px] inline-block h-2.5 w-2.5 rounded-full bg-white/80"></span><span>Built for long-term scaling and visibility</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Comparison table of features across plans -->
+    <div class="mt-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
+      <div class="overflow-x-auto">
+        <table class="min-w-full border-collapse text-left">
+          <thead>
+            <tr class="border-b border-white/10 bg-white/[0.03] text-sm text-white/70">
+              <th class="px-6 py-4 font-medium">Feature</th>
+              <th class="px-6 py-4 font-medium">$800 USD</th>
+              <th class="px-6 py-4 font-medium">$1500 USD</th>
+              <th class="px-6 py-4 font-medium">$3000+ USD</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm text-white/80">
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">3–4 page website</td>
+              <td class="px-6 py-4">✓</td>
+              <td class="px-6 py-4">✓</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Premium custom design</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">✓</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Basic SEO</td>
+              <td class="px-6 py-4">✓</td>
+              <td class="px-6 py-4">✓</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Advanced SEO option</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Walk-through call</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">✓</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Videos + documentation</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Revisions included</td>
+              <td class="px-6 py-4">Basic</td>
+              <td class="px-6 py-4">More</td>
+              <td class="px-6 py-4">Extensive</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Support</td>
+              <td class="px-6 py-4">Short-term</td>
+              <td class="px-6 py-4">Included</td>
+              <td class="px-6 py-4">Extended</td>
+            </tr>
+            <tr class="border-b border-white/10">
+              <td class="px-6 py-4 text-white/60">Fully customizable</td>
+              <td class="px-6 py-4">✕</td>
+              <td class="px-6 py-4">Partial</td>
+              <td class="px-6 py-4">✓</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 text-white/60">Best for</td>
+              <td class="px-6 py-4">Simple online presence</td>
+              <td class="px-6 py-4">Serious personal branding</td>
+              <td class="px-6 py-4">Long-term premium growth</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonial section -->
+  <section id="testimonial" class="apple-reveal mx-auto max-w-7xl px-6 py-8 lg:px-10">
+    <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-8 sm:p-10">
+      <div class="text-xs uppercase tracking-[0.22em] text-white/40">Client words</div>
+      <blockquote class="mt-6 max-w-4xl text-2xl font-medium leading-[1.5] text-white/92 sm:text-3xl">
+        “Working with Ishan completely changed how I present myself online. He understood exactly the kind of image I wanted for Frenchie Rose and turned it into a website that feels elegant, professional, and truly mine. The site looks beautiful, loads smoothly, and makes me look far more established to clients. I’ve had people compliment the website itself, which says a lot. He was patient, creative, and knew how to make everything feel high-end.”
+      </blockquote>
+      <div class="mt-6 text-sm text-white/55">— Client testimonial inspired by feedback from a model website project. Rates are negotiable according to the client’s wants, needs, features, and support level.</div>
+    </div>
+  </section>
+  <!-- Education section -->
+  <section id="education" class="apple-reveal mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <div class="mb-10">
+      <div class="text-xs uppercase tracking-[0.22em] text-white/40">Background</div>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Education</h2>
+    </div>
+    <div class="grid gap-5">
+      <!-- York University -->
+      <div class="rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+        <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h3 class="text-2xl font-semibold tracking-tight">York University</h3>
+            <div class="mt-2 text-base text-white/80">Postgraduate Degree, Digital and Content Marketing</div>
+          </div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-sm text-white/55">2024 – 2025</div>
+        </div>
+        <p class="mt-4 max-w-4xl text-sm leading-7 text-white/60 sm:text-base">Gained hands-on experience in SEO, social media strategy, content creation, Google Ads, analytics, branding, and campaign planning.</p>
+      </div>
+      <!-- Canadore College -->
+      <div class="rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+        <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h3 class="text-2xl font-semibold tracking-tight">Canadore College</h3>
+            <div class="mt-2 text-base text-white/80">Postgraduate Degree, Information Technology Project Management</div>
+          </div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-sm text-white/55">2023 – 2024</div>
+        </div>
+        <p class="mt-4 max-w-4xl text-sm leading-7 text-white/60 sm:text-base">Grade: 3.50</p>
+      </div>
+      <!-- University of Northampton -->
+      <div class="rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+        <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h3 class="text-2xl font-semibold tracking-tight">University of Northampton</h3>
+            <div class="mt-2 text-base text-white/80">Bachelor of Science, Information Technology</div>
+          </div>
+          <div class="rounded-full border border-white/10 px-3 py-1 text-sm text-white/55">2017 – 2021</div>
+        </div>
+        <p class="mt-4 max-w-4xl text-sm leading-7 text-white/60 sm:text-base">Network Engineering</p>
+      </div>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Ishan Sharma. All rights reserved.</p>
+  <!-- Services section: highlight what I can offer -->
+  <section id="services" class="apple-reveal mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <div class="mb-10">
+      <div class="text-xs uppercase tracking-[0.22em] text-white/40">Services</div>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">What I Can Do For You</h2>
+      <p class="mt-3 max-w-3xl text-base leading-7 text-white/65">From concept to launch, I provide end‑to‑end solutions that elevate your digital presence and drive results.</p>
+    </div>
+    <div class="space-y-3 max-w-3xl">
+      <div class="flex items-start gap-3">
+        <span class="mt-[5px] inline-block h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+        <span class="text-white/85">Custom Website Design</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-[5px] inline-block h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+        <span class="text-white/85">E‑commerce Development</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-[5px] inline-block h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+        <span class="text-white/85">Branding & Visual Identity</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-[5px] inline-block h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+        <span class="text-white/85">SEO & Performance Optimization</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-[5px] inline-block h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+        <span class="text-white/85">Digital Strategy & Consulting</span>
+      </div>
+    </div>
+    <div class="mt-8">
+      <a href="#contact" class="inline-block rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10">Let’s Talk</a>
+    </div>
+  </section>
+  <!-- Contact / Get in touch section -->
+  <section id="contact" class="apple-reveal mx-auto max-w-7xl px-6 pb-24 pt-6 lg:px-10">
+    <div class="rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 sm:p-10">
+      <div class="text-xs uppercase tracking-[0.22em] text-white/40">Contact</div>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Let’s build something premium</h2>
+      <p class="mt-4 max-w-2xl text-base leading-7 text-white/65">For model websites, personal brand websites, and custom digital presentation work.</p>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+          <div class="text-sm text-white/45">Phone</div>
+          <div class="mt-2 text-white/90"><a href="tel:+14376028171">+1 437&nbsp;602&nbsp;8171</a></div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+          <div class="text-sm text-white/45">Email</div>
+          <div class="mt-2 text-white/90 break-all"><a href="mailto:ishanma678@gmail.com">ishanma678@gmail.com</a></div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+          <div class="text-sm text-white/45">Backup Email</div>
+          <div class="mt-2 text-white/90 break-all"><a href="mailto:maishan578@gmail.com">maishan578@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="mx-auto max-w-7xl px-6 pb-10 pt-2 text-center text-sm text-white/35 lg:px-10">
+    Copyright © Ishan 2026
   </footer>
 </body>
 </html>
